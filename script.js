@@ -1,16 +1,22 @@
 // toggle icon navbar
 let menuIcon = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.navbar');
-let input = document.querySelector('.contact form input')
-let submit = docment.querySelector('contact form .btn')
+let submit = document.querySelector('.contact form .btn');
+let submitted = document.querySelector('.contact .submitted');
+const form = document.querySelector('form');
 
-submit.addEventListener('click', ()=>{
-  if(input === 0){
-    document.textContent = 'Please fill out all the fields. '
-  }else{
-    document.textContent = 'Thank you. We will get back to you soon. '
-  }
-})
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from actually submitting
+
+    const input = document.querySelector('.input-field input');
+    
+    if (input.value.length === 0) {
+        submitted.textContent = "Please fill out all the fields.";
+    } else {
+        submitted.textContent = "Thank you. We will get back to you soon.";
+    }
+});
 
 menuIcon.onclick = () => {
   // Toggle the "active" class on both the menu icon and navbar
